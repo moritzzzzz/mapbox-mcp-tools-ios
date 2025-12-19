@@ -17,7 +17,7 @@ This is the iOS equivalent of the [Android Mapbox MCP library](https://github.co
 
 ## Demo
 
-Check out the [demo app](../demo_app) to see MapboxMCPTools in action with a full Claude API integration.
+Check out the [demo app](https://github.com/moritzzzzz/mapbox-mcp-tools-ios/tree/master/blob/demo_app/ios_mapbox_mcp_wrapper) to see MapboxMCPTools in action with a full Claude API integration.
 
 ## Features
 
