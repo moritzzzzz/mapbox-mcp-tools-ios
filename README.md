@@ -98,6 +98,53 @@ Get your Mapbox access token from [mapbox.com](https://account.mapbox.com/access
 | `clear_map_layers` | Remove annotation layers | layerIds |
 | `get_map_state` | Get current viewport and layers | (none) |
 
+## Token Usage & Costs
+
+Adding these 7 MCP tools to your Claude API requests uses approximately **~1,300 tokens** per request.
+
+### Cost Breakdown
+
+**Claude Sonnet 4.5 Pricing:**
+- Input: $3.00 per 1M tokens
+- Output: $15.00 per 1M tokens
+
+**Per Request:**
+- MCP tools: **~$0.0039** (1,307 tokens)
+- User message (avg): **~$0.0001** (25 tokens)
+- Claude response (avg): **~$0.0015** (100 tokens)
+- **Total per turn: ~$0.0055** (less than 1¢)
+
+### Usage Examples
+
+| Scenario | API Calls | Approximate Cost |
+|----------|-----------|------------------|
+| 10 map operations | 10 | $0.02 |
+| 100 map operations | 100 | $0.09 |
+| 1,000 map operations | 1,000 | $0.65 |
+| 10,000 map operations | 10,000 | $6.50 |
+
+### Optimization Tips
+
+**1. Use selective tools** - Include only the tools you need:
+```swift
+// Instead of all 7 tools (~1,300 tokens)
+let allTools = mcpTools.getToolsForLLM()
+
+// Use only navigation tools (~400 tokens)
+let navTools = [
+    MCPToolDefinition.panMapToLocation,
+    MCPToolDefinition.setMapStyle
+]
+```
+
+**2. Batch operations** - Ask Claude to perform multiple map actions in one request
+
+**3. Use prompt caching** - Claude API's prompt caching (in beta) can cache tool definitions across requests
+
+### Summary
+
+The token overhead is minimal - you can make **thousands of map-related requests for just a few dollars**, making this extremely cost-effective compared to traditional map API pricing.
+
 ## Usage
 
 ### 1. Prerequisites
